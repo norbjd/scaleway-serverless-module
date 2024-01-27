@@ -5,7 +5,7 @@ Used to validate a YAML config file used by [`scaleway-serverless-module` Terraf
 Install and test with:
 
 ```shell
-go install github.com/norbjd/scaleway-serverless-module-validator@main
+go install github.com/norbjd/scaleway-serverless-module/scaleway-serverless-module-validator@main
 
 # show usage
 scaleway-serverless-module-validator -h
