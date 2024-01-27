@@ -1,6 +1,5 @@
 module "scaleway_serverless" {
-  source = "../.." // TODO: change to git once the first version is pushed
-  // source = "git::https://github.com/norbjd/scaleway-serverless-module.git?ref=main"
+  source = "git::https://github.com/norbjd/scaleway-serverless-module.git?ref=init"
 
   container_push_secret_key = var.container_push_secret_key
 
