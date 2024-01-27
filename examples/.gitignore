@@ -1,0 +1,7 @@
+# terraform related files
+.terraform/
+.terraform*
+terraform.tfstate*
+
+# zip archives built by the module
+*.zip
