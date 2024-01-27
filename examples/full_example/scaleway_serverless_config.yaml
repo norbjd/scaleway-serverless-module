@@ -1,0 +1,136 @@
+# yaml-language-server: $schema=../../validator/config_json_schema.json
+function_namespaces:
+  - name: my-namespace-1
+    region: "${region}"
+    project_id: "${project_id}"
+    description: |
+      1st namespace
+    environment_variables:
+      - key: var1
+        value: value1
+      - key: var2
+        value: ${var2}
+    secret_environment_variables:
+      - key: secret_var1
+        value: ${secret_var1}
+      - key: secret_var2
+        value: ${secret_var2}
+    functions:
+      - name: func1
+        runtime: node20
+        memory_limit: 512
+        handler: handler.handle
+        source: ./func1
+        privacy: public
+        description: |
+          Just a simple function
+        environment_variables:
+          - key: varA
+            value: valueA
+          - key: varB
+            value: valueB
+        secret_environment_variables:
+          - key: secret_varA
+            value: ${secret_varA}
+          - key: secret_varB
+            value: ${secret_varB}
+        min_scale: 0
+        max_scale: 10
+        timeout: 300
+        http_option: redirected
+        triggers:
+          crons:
+            - name: cron1
+              schedule: 0 0 * * *
+              json_args: |
+                {
+                  "key1": "value1",
+                  "key2": "value2"
+                }
+            - name: cron2
+              schedule: 10 0 * * *
+              json_args: |
+                {
+                  "key3": "value3"
+                }
+          sqs:
+            - name: trigger-sqs-1
+              queue: queue1
+            - name: trigger-sqs-2
+              queue: queue2
+              project_id: "${project_id}"
+              region: "${region}"
+          # nats: # technically, this works, but it requires to have a NATS account created before, which we don't have in this example
+          #   - name: trigger-nats-1
+          #     account_id: "AXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          #     subject: subject1
+          #   - name: trigger-nats-2
+          #     account_id: "AXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          #     subject: subject2
+          #     project_id: ${project_id}
+          #     region: ${region}
+        tokens:
+          - description: a function token
+            expires_at: "2100-01-01T00:00:00+00:00"
+          - description: another function token
+    tokens:
+      - description: a namespace token
+        expires_at: "2100-01-01T00:00:00+00:00"
+      - description: another namespace token
+  - name: my-namespace-2
+    region: "${region}"
+    project_id: "${project_id}"
+    functions:
+      - name: func2
+        runtime: node18
+        memory_limit: 1024
+        handler: handler.handle
+        source: ./func2
+        privacy: public
+        triggers:
+          crons:
+            - name: cron1
+              schedule: 0 0 * * *
+              json_args: |
+                {
+                  "key1": "value1",
+                  "key2": "value2"
+                }
+        # domains:
+        #   - some.domain.example.com # won't set it here, because domain must be configured to point to the function first
+      - name: func3
+        runtime: node20
+        memory_limit: 256
+        handler: handler.handle
+        source: ./func3
+        privacy: public
+  - name: my-namespace3
+    region: "${region}"
+    project_id: "${project_id}"
+container_namespaces:
+  - name: cont-namespace1
+    region: "${region}"
+    project_id: "${project_id}"
+    containers:
+      - name: nginx
+        cpu_limit: 240
+        memory_limit: 512
+        image: "nginx:latest"
+        port: 80
+        privacy: public
+        min_scale: 0
+        max_scale: 1
+        timeout: 300
+        http_option: redirected
+      - name: custom
+        cpu_limit: 240
+        memory_limit: 512
+        build:
+          context: ./custom_nginx
+        port: 80
+        privacy: public
+        min_scale: 0
+        max_scale: 1
+  - name: cont-namespace2
+    region: "${region}"
+    project_id: "${project_id}"
