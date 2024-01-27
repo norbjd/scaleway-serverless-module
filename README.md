@@ -129,6 +129,25 @@ Config file must be in YAML format, and must match the JSON schema located [here
 > [!WARNING]
 > JSON schema is far from being perfect, but it helps to catch obvious errors. I'll refine this schema with the time.
 
+### Validate the config file
+
+To validate the config file, you can use the validator provided [here](validator/):
+
+```shell
+go install github.com/norbjd/scaleway-serverless-module-validator@main
+
+scaleway-serverless-module-validator -context-dir /path/to/dir
+```
+
+I highly encourage users to run the validator before running any `terraform` operation to catch common mistakes (e.g. invalid function name) before getting rejected by `terraform`, or worse, getting a cryptic error from the module (e.g. if `function_namespaces` contains a `string` instead of an `object`).
+
+When developing locally, it's useful to add the JSON schema when editing config files, to have a quicker feedback:
+
+- with JetBrains based IDEs: https://www.jetbrains.com/help/idea/json.html#ws_json_schema_add_custom
+- with code: add `# yaml-language-server: $schema=/path/to/validator/config_json_schema.json` at the top of the YAML file: it seems you have to download the JSON schema, as loading a remote schema [does not work](https://github.com/redhat-developer/vscode-yaml/issues/550)
+
+See also [validator's README.md](validator/README.md) for more details.
+
 ## Examples
 
 See [examples/full_example/scaleway_serverless_config.yaml](examples/full_example/scaleway_serverless_config.yaml) for a full example.
