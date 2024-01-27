@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../../validator/config_json_schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/norbjd/scaleway-serverless-module/main/validator/config_json_schema.json
 function_namespaces:
   - name: my-namespace-1
     region: "${region}"

@@ -144,7 +144,7 @@ I highly encourage users to run the validator before running any `terraform` ope
 When developing locally, it's useful to add the JSON schema when editing config files, to have a quicker feedback:
 
 - with JetBrains based IDEs: https://www.jetbrains.com/help/idea/json.html#ws_json_schema_add_custom
-- with code: add `# yaml-language-server: $schema=/path/to/validator/config_json_schema.json` at the top of the YAML file: it seems you have to download the JSON schema, as loading a remote schema [does not work](https://github.com/redhat-developer/vscode-yaml/issues/550)
+- with code: add `# yaml-language-server: $schema=https://raw.githubusercontent.com/norbjd/scaleway-serverless-module/main/validator/config_json_schema.json` at the top of the YAML file, assuming you have installed [this extension](https://github.com/redhat-developer/yaml-language-server)
 
 See also [validator's README.md](validator/README.md) for more details.
 
