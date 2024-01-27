@@ -1,5 +1,5 @@
 module "scaleway_serverless" {
-  source = "git::https://github.com/norbjd/scaleway-serverless-module.git?ref=init"
+  source = "git::https://github.com/norbjd/scaleway-serverless-module.git?ref=main"
 
   container_push_secret_key = var.container_push_secret_key
 
