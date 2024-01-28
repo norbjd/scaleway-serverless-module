@@ -174,18 +174,18 @@ a_folder_to_ignore
 <!-- BEGIN_TF_DOCS -->
 ### Requirements
 
-| Name | Version   |
-|------|-----------|
+| Name | Version |
+|------|---------|
 | <a name="requirement_scaleway"></a> [scaleway](#requirement\_scaleway) | >= 2.36.0 |
 
 ### Providers
 
-| Name | Version   |
-|------|-----------|
-| <a name="provider_archive"></a> [archive](#provider\_archive) | n/a       |
-| <a name="provider_null"></a> [null](#provider\_null) | n/a       |
+| Name | Version |
+|------|---------|
+| <a name="provider_archive"></a> [archive](#provider\_archive) | n/a |
+| <a name="provider_null"></a> [null](#provider\_null) | n/a |
 | <a name="provider_scaleway"></a> [scaleway](#provider\_scaleway) | >= 2.36.0 |
-| <a name="provider_time"></a> [time](#provider\_time) | n/a       |
+| <a name="provider_time"></a> [time](#provider\_time) | n/a |
 
 ### Modules
 
