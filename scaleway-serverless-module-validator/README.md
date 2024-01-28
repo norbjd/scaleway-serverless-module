@@ -1,4 +1,4 @@
-# scaleway-serverless-module validator
+# scaleway-serverless-module-validator
 
 Used to validate a YAML config file used by [`scaleway-serverless-module` Terraform module](https://github.com/norbjd/scaleway-serverless-module). This can be executed before running using the module to ensure the YAML configuration file passed to the module is valid.
 
@@ -30,7 +30,7 @@ $ echo $?
 
 ## Examples
 
-In these examples, we assume `/path/to/folder` is the folder where YAML config file (+ optional env file) are located.
+In these examples, we assume `/path/to/folder` is the folder where YAML config file, and the optional env file, are located.
 
 ### Validate against last module's JSON schema version (with or without env file)
 
