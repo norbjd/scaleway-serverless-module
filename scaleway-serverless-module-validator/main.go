@@ -1,4 +1,4 @@
-// This file is part of scaleway-serverless-module-validator (https://github.com/norbjd/scaleway-serverless-module/validator).
+// This file is part of scaleway-serverless-module-validator (https://github.com/norbjd/scaleway-serverless-module/scaleway-serverless-module-validator).
 //
 // Copyright (C) 2024 norbjd
 //
@@ -45,7 +45,7 @@ func main() {
 	flag.Parse()
 
 	pathToJSONSchema := fmt.Sprintf(
-		"https://raw.githubusercontent.com/norbjd/scaleway-serverless-module/%s/validator/config_json_schema.json",
+		"https://raw.githubusercontent.com/norbjd/scaleway-serverless-module/%s/scaleway-serverless-module-validator/config_json_schema.json",
 		moduleVersion,
 	)
 

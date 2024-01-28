@@ -1,4 +1,4 @@
-// This file is part of scaleway-serverless-module-validator (https://github.com/norbjd/scaleway-serverless-module/validator).
+// This file is part of scaleway-serverless-module-validator (https://github.com/norbjd/scaleway-serverless-module/scaleway-serverless-module-validator).
 //
 // Copyright (C) 2024 norbjd
 //

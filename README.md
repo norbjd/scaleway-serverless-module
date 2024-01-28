@@ -124,17 +124,17 @@ If you're using this module to build custom container images, `docker` **MUST** 
 
 ## Config file format
 
-Config file must be in YAML format, and must match the JSON schema located [here](validator/config_json_schema.json).
+Config file must be in YAML format, and must match the JSON schema located [here](scaleway-serverless-module-validator/config_json_schema.json).
 
 > [!WARNING]
 > JSON schema is far from being perfect, but it helps to catch obvious errors. I'll refine this schema with the time.
 
 ### Validate the config file
 
-To validate the config file, you can use the validator provided [here](validator/):
+To validate the config file, you can use the validator provided [here](scaleway-serverless-module-validator/):
 
 ```shell
-go install github.com/norbjd/scaleway-serverless-module-validator@main
+go install github.com/norbjd/scaleway-serverless-module/scaleway-serverless-module-validator@main
 
 scaleway-serverless-module-validator -context-dir /path/to/dir
 ```
@@ -144,9 +144,9 @@ I highly encourage users to run the validator before running any `terraform` ope
 When developing locally, it's useful to add the JSON schema when editing config files, to have a quicker feedback:
 
 - with JetBrains based IDEs: https://www.jetbrains.com/help/idea/json.html#ws_json_schema_add_custom
-- with code: add `# yaml-language-server: $schema=https://raw.githubusercontent.com/norbjd/scaleway-serverless-module/main/validator/config_json_schema.json` at the top of the YAML file, assuming you have installed [this extension](https://github.com/redhat-developer/yaml-language-server)
+- with code: add `# yaml-language-server: $schema=https://raw.githubusercontent.com/norbjd/scaleway-serverless-module/main/scaleway-serverless-module-validator/config_json_schema.json` at the top of the YAML file, assuming you have installed [this extension](https://github.com/redhat-developer/yaml-language-server)
 
-See also [validator's README.md](validator/README.md) for more details.
+See also [validator's README.md](scaleway-serverless-module-validator/README.md) for more details.
 
 ## Examples
 

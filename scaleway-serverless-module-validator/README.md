@@ -17,7 +17,7 @@ When validation succeeds, `scaleway-serverless-module-validator` exits with a co
 
 ```
 $ ./scaleway-serverless-module-validator -context-dir /path/to/folder
-2024/01/27 17:07:16 checking config validity against: https://raw.githubusercontent.com/norbjd/scaleway-serverless-module/main/validator/config_json_schema.json
+2024/01/27 17:07:16 checking config validity against: https://raw.githubusercontent.com/norbjd/scaleway-serverless-module/main/scaleway-serverless-module-validator/config_json_schema.json
 2024/01/27 17:07:16 config file used is: /path/to/folder/scaleway_serverless_config.yaml
 2024/01/27 17:07:16 found some errors:
 2024/01/27 17:07:16 - function_namespaces.0.functions.0.memory_limit: function_namespaces.0.functions.0.memory_limit must be one of the following: 128, 256, 512, 1024, 2048, 4096
