@@ -1,4 +1,4 @@
-module github.com/norbjd/scaleway-serverless-module/scaleway-serverless-module-validator
+module github.com/norbjd/scaleway-serverless-module/validator
 
 go 1.21
 
