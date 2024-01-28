@@ -54,8 +54,7 @@ resource "scaleway_container_cron" "container_crons" {
 
   region = each.value.namespace.region
 
-  // name = each.value.cron.name // TODO: name can't be set with Terraform provider (https://github.com/scaleway/terraform-provider-scaleway/issues/2363)
-
+  name         = each.value.cron.name
   container_id = scaleway_container.containers[format("%s/%s/%s/%s", each.value.namespace.region, each.value.namespace.project_id, each.value.namespace.name, each.value.container.name)].id
   schedule     = each.value.cron.schedule
   args         = each.value.cron.args

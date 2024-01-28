@@ -94,7 +94,7 @@ terraform {
   required_providers {
     scaleway = {
       source  = "scaleway/scaleway"
-      version = ">= 2.35.0"
+      version = ">= 2.36.0"
     }
   }
 }
@@ -176,7 +176,7 @@ a_folder_to_ignore
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_scaleway"></a> [scaleway](#requirement\_scaleway) | >= 2.35.0 |
+| <a name="requirement_scaleway"></a> [scaleway](#requirement\_scaleway) | >= 2.36.0 |
 
 ### Providers
 
@@ -184,7 +184,7 @@ a_folder_to_ignore
 |------|---------|
 | <a name="provider_archive"></a> [archive](#provider\_archive) | n/a |
 | <a name="provider_null"></a> [null](#provider\_null) | n/a |
-| <a name="provider_scaleway"></a> [scaleway](#provider\_scaleway) | >= 2.35.0 |
+| <a name="provider_scaleway"></a> [scaleway](#provider\_scaleway) | >= 2.36.0 |
 | <a name="provider_time"></a> [time](#provider\_time) | n/a |
 
 ### Modules
