@@ -17,9 +17,10 @@ locals {
     ] : []
   )...)
 
-  containers = merge(flatten([
-    for ns in local.config.container_namespaces : [
-      contains(keys(ns), "containers") ? (
+  containers = merge(flatten(
+    contains(keys(local.config), "container_namespaces") ? [
+      for ns in local.config.container_namespaces : [
+        contains(keys(ns), "containers") ? (
         [
           for c in(ns.containers) : {
             format("%s/%s/%s/%s", ns.region, ns.project_id, ns.name, c.name) = {
@@ -46,13 +47,15 @@ locals {
             }
           }
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 
-  container_crons = merge(flatten([
-    for ns in local.config.container_namespaces : [
-      contains(keys(ns), "containers") ? (
+  container_crons = merge(flatten(
+    contains(keys(local.config), "container_namespaces") ? [
+      for ns in local.config.container_namespaces : [
+        contains(keys(ns), "containers") ? (
         [
           for f in(ns.containers) : [
             contains(keys(f), "triggers") ? (
@@ -81,13 +84,15 @@ locals {
             ) : []
           ]
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 
-  container_sqs_triggers = merge(flatten([
-    for ns in local.config.container_namespaces : [
-      contains(keys(ns), "containers") ? (
+  container_sqs_triggers = merge(flatten(
+    contains(keys(local.config), "container_namespaces") ? [
+      for ns in local.config.container_namespaces : [
+        contains(keys(ns), "containers") ? (
         [
           for f in(ns.containers) : [
             contains(keys(f), "triggers") ? (
@@ -118,13 +123,15 @@ locals {
             ) : []
           ]
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 
-  container_nats_triggers = merge(flatten([
-    for ns in local.config.container_namespaces : [
-      contains(keys(ns), "containers") ? (
+  container_nats_triggers = merge(flatten(
+    contains(keys(local.config), "container_namespaces") ? [
+      for ns in local.config.container_namespaces : [
+        contains(keys(ns), "containers") ? (
         [
           for f in(ns.containers) : [
             contains(keys(f), "triggers") ? (
@@ -156,13 +163,15 @@ locals {
             ) : []
           ]
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 
-  container_domains = merge(flatten([
-    for ns in local.config.container_namespaces : [
-      contains(keys(ns), "containers") ? (
+  container_domains = merge(flatten(
+    contains(keys(local.config), "container_namespaces") ? [
+      for ns in local.config.container_namespaces : [
+        contains(keys(ns), "containers") ? (
         [
           for f in(ns.containers) : [
             contains(keys(f), "domains") ? (
@@ -185,13 +194,15 @@ locals {
             ) : []
           ]
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 
-  container_namespace_tokens = merge(flatten([
-    for ns in local.config.container_namespaces : [
-      contains(keys(ns), "tokens") ? (
+  container_namespace_tokens = merge(flatten(
+    contains(keys(local.config), "container_namespaces") ? [
+      for ns in local.config.container_namespaces : [
+        contains(keys(ns), "tokens") ? (
         [
           for t in ns.tokens : {
             // we can't pass a unique name to a token, so we use the description as the unique discriminator of tokens
@@ -208,13 +219,15 @@ locals {
             }
           }
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 
-  container_tokens = merge(flatten([
-    for ns in local.config.container_namespaces : [
-      contains(keys(ns), "containers") ? (
+  container_tokens = merge(flatten(
+    contains(keys(local.config), "container_namespaces") ? [
+      for ns in local.config.container_namespaces : [
+        contains(keys(ns), "containers") ? (
         [
           for f in(ns.containers) : [
             contains(keys(f), "tokens") ? (
@@ -241,15 +254,17 @@ locals {
             ) : []
           ]
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 }
 
 locals {
-  container_images = merge(flatten([
-    for ns in local.config.container_namespaces : [
-      contains(keys(ns), "containers") ? (
+  container_images = merge(flatten(
+    contains(keys(local.config), "container_namespaces") ? [
+      for ns in local.config.container_namespaces : [
+        contains(keys(ns), "containers") ? (
         [
           for f in(ns.containers) : [
             contains(keys(f), "build") ? (
@@ -272,7 +287,8 @@ locals {
             ) : {}
           ]
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 }

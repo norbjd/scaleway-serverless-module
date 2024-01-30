@@ -17,9 +17,10 @@ locals {
     ] : []
   )...)
 
-  functions = merge(flatten([
-    for ns in local.config.function_namespaces : [
-      contains(keys(ns), "functions") ? (
+  functions = merge(flatten(
+    contains(keys(local.config), "function_namespaces") ? [
+      for ns in local.config.function_namespaces : [
+        contains(keys(ns), "functions") ? (
         [
           for f in(ns.functions) : {
             format("%s/%s/%s/%s", ns.region, ns.project_id, ns.name, f.name) = {
@@ -46,13 +47,15 @@ locals {
             }
           }
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 
-  function_crons = merge(flatten([
-    for ns in local.config.function_namespaces : [
-      contains(keys(ns), "functions") ? (
+  function_crons = merge(flatten(
+    contains(keys(local.config), "function_namespaces") ? [
+      for ns in local.config.function_namespaces : [
+        contains(keys(ns), "functions") ? (
         [
           for f in(ns.functions) : [
             contains(keys(f), "triggers") ? (
@@ -81,13 +84,15 @@ locals {
             ) : []
           ]
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 
-  function_sqs_triggers = merge(flatten([
-    for ns in local.config.function_namespaces : [
-      contains(keys(ns), "functions") ? (
+  function_sqs_triggers = merge(flatten(
+    contains(keys(local.config), "function_namespaces") ? [
+      for ns in local.config.function_namespaces : [
+        contains(keys(ns), "functions") ? (
         [
           for f in(ns.functions) : [
             contains(keys(f), "triggers") ? (
@@ -118,13 +123,15 @@ locals {
             ) : []
           ]
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 
-  function_nats_triggers = merge(flatten([
-    for ns in local.config.function_namespaces : [
-      contains(keys(ns), "functions") ? (
+  function_nats_triggers = merge(flatten(
+    contains(keys(local.config), "function_namespaces") ? [
+      for ns in local.config.function_namespaces : [
+        contains(keys(ns), "functions") ? (
         [
           for f in(ns.functions) : [
             contains(keys(f), "triggers") ? (
@@ -156,13 +163,15 @@ locals {
             ) : []
           ]
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 
-  function_domains = merge(flatten([
-    for ns in local.config.function_namespaces : [
-      contains(keys(ns), "functions") ? (
+  function_domains = merge(flatten(
+    contains(keys(local.config), "function_namespaces") ? [
+      for ns in local.config.function_namespaces : [
+        contains(keys(ns), "functions") ? (
         [
           for f in(ns.functions) : [
             contains(keys(f), "domains") ? (
@@ -185,13 +194,15 @@ locals {
             ) : []
           ]
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 
-  function_namespace_tokens = merge(flatten([
-    for ns in local.config.function_namespaces : [
-      contains(keys(ns), "tokens") ? (
+  function_namespace_tokens = merge(flatten(
+    contains(keys(local.config), "function_namespaces") ? [
+      for ns in local.config.function_namespaces : [
+        contains(keys(ns), "tokens") ? (
         [
           for t in ns.tokens : {
             // we can't pass a unique name to a token, so we use the description as the unique discriminator of tokens
@@ -208,13 +219,15 @@ locals {
             }
           }
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 
-  function_tokens = merge(flatten([
-    for ns in local.config.function_namespaces : [
-      contains(keys(ns), "functions") ? (
+  function_tokens = merge(flatten(
+    contains(keys(local.config), "function_namespaces") ? [
+      for ns in local.config.function_namespaces : [
+        contains(keys(ns), "functions") ? (
         [
           for f in(ns.functions) : [
             contains(keys(f), "tokens") ? (
@@ -241,7 +254,8 @@ locals {
             ) : []
           ]
         ]
-      ) : []
-    ]
-  ])...)
+        ) : []
+      ]
+    ] : []
+  )...)
 }
