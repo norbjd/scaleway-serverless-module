@@ -158,7 +158,7 @@ This YAML config file supports templating: define values in a `.scaleway_serverl
 
 When building the archive containing the function code, some files or folders could be ignored. This is useful to avoid putting not needed files in the archive.
 
-To ignore files, just put a `.scaleway-serverless.ignore` alongside the function directory. Each line of the file is a file or folder that will be ignored when packaging:
+To ignore files, just put a `.scaleway_serverless.ignore` alongside the function directory. Each line of the file is a file or folder that will be ignored when packaging:
 
 ```ignore
 a_file_to_ignore

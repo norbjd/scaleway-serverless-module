@@ -13,7 +13,7 @@ resource "scaleway_function_namespace" "namespaces" {
 }
 
 locals {
-  ignore_filename = ".scaleway-serverless.ignore"
+  ignore_filename = ".scaleway_serverless.ignore"
 }
 
 data "archive_file" "functions" {
