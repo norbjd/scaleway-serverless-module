@@ -122,6 +122,7 @@ container_namespaces:
         max_scale: 1
         timeout: 300
         http_option: redirected
+        max_concurrency: 80
       - name: custom
         cpu_limit: 240
         memory_limit: 512

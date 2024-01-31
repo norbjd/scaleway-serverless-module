@@ -542,6 +542,11 @@
                     "disabled"
                   ]
                 },
+                "max_concurrency": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 80
+                },
                 "triggers": {
                   "type": "object",
                   "properties": {

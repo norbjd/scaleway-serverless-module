@@ -43,6 +43,7 @@ locals {
                 max_scale                    = contains(keys(c), "max_scale") ? c.max_scale : 1
                 timeout                      = contains(keys(c), "timeout") ? c.timeout : 300
                 http_option                  = contains(keys(c), "http_option") ? c.http_option : "redirected"
+                max_concurrency              = contains(keys(c), "max_concurrency") ? c.max_concurrency : 50
               }
             }
           }
