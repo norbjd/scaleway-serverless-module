@@ -45,6 +45,7 @@ resource "scaleway_container" "containers" {
   max_scale                    = each.value.container.max_scale
   timeout                      = each.value.container.timeout
   http_option                  = each.value.container.http_option
+  max_concurrency              = each.value.container.max_concurrency
 
   deploy = true
 }
