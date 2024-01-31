@@ -1,8 +1,11 @@
 locals {
   // decode the YAML file containing variables to inject into config file (using templating)
-  env = fileexists(
-    "${var.context_dir}/${var.env_filename}"
-  ) ? yamldecode(file("${var.context_dir}/${var.env_filename}")) : {}
+  // and merge with var.env
+  env = merge(
+    fileexists(
+      "${var.context_dir}/${var.env_filename}"
+    ) ? yamldecode(file("${var.context_dir}/${var.env_filename}")) : {}
+  , var.env)
 
   // the config file, templated with env defined above
   config = yamldecode(
