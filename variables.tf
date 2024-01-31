@@ -16,6 +16,12 @@ variable "env_filename" {
   description = "Name of the file used to store variables used to template the config file. This file must be located in context_dir"
 }
 
+variable "env" {
+  type        = map(string)
+  default     = {}
+  description = "Other env variables. Useful if we want to pass values from Terraform directly (and not using the env file). Variables defined here take precedence over those defined in the env file if there is a conflict"
+}
+
 variable "container_push_secret_key" {
   type        = string
   default     = ""
